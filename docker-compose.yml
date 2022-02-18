@@ -7,13 +7,14 @@ services:
       - dbvol:/var/lib/mysql
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=skeleton
       - MYSQL_ROOT_USER=root
+      - MYSQL_ROOT_PASSWORD=password
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=password
     ports:
       - 5432:3306
+
   app:
     build:
       context: .
@@ -22,7 +23,7 @@ services:
         DB_USER: "${DB_USER:-root}"
         DB_PASSWORD: "${DB_PASSWORD:-password}"
         DB_URL: "${DB_URL:-jdbc:mysql://host.docker.internal:5432/skeleton}"
-    container_name: skeleton
+    container_name: skeleton_service
     environment:
       - PROFILE=local
       - DB_URL=jdbc:mysql://skeleton_db:3306/skeleton

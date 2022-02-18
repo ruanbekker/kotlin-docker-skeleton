@@ -36,7 +36,6 @@ WORKDIR /app
 
 COPY . ./
 
-
 RUN mvn dependency:go-offline
 RUN mvn clean package
 
@@ -46,7 +45,7 @@ RUN mvn clean package
 #
 # NOTE: You will also need to change the name in bin/start.sh
 # ---------------------------------------------------------------------------
-RUN cp target/span-0.0.1-SNAPSHOT.jar /app/skeleton.jar
+RUN cp target/skeleton-0.0.1-SNAPSHOT.jar /app/skeleton.jar
 
 FROM adoptopenjdk:11-jre-hotspot
 

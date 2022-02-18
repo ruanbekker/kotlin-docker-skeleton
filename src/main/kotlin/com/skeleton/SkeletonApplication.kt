@@ -1,4 +1,4 @@
-package com.kotlin.skeleton
+package com.skeleton
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
