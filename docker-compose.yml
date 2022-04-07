@@ -1,8 +1,9 @@
-version: "3.6"
+version: "3.8"
 
 services:
   skeleton_db:
     image: mysql:5.7
+    container_name: skeleton_db
     volumes:
       - dbvol:/var/lib/mysql
     restart: always
@@ -13,7 +14,7 @@ services:
       - DATABASE_USERNAME=root
       - DATABASE_PASSWORD=password
     ports:
-      - 5432:3306
+      - 3306:3306
 
   app:
     build:
@@ -22,7 +23,7 @@ services:
       args:
         DB_USER: "${DB_USER:-root}"
         DB_PASSWORD: "${DB_PASSWORD:-password}"
-        DB_URL: "${DB_URL:-jdbc:mysql://host.docker.internal:5432/skeleton}"
+        DB_URL: "${DB_URL:-jdbc:mysql://host.docker.internal:3306/skeleton}"
     container_name: skeleton_service
     environment:
       - PROFILE=local
@@ -40,7 +41,7 @@ services:
     volumes:
       - /app
     ports:
-      - 8084:8080
+      - 8080:8080
     tty: true
     stdin_open: true
     depends_on:
