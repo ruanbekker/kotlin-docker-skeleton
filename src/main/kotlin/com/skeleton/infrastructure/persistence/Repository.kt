@@ -1,7 +1,7 @@
 package com.skeleton.infrastructure.persistence
 
 import com.skeleton.domain.persistence.entities.UserEntity
-import com.skeleton.infrastructure.persistence.repositories.UsersRepository
+import com.skeleton.application.persistence.repositories.UsersRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
 import java.util.Optional
@@ -39,5 +39,16 @@ class Repository @Autowired constructor(
 
     fun findUserByPhone(phone: String): Optional<UserEntity> {
         return usersRepository.findByPhone(phone)
+    }
+
+    fun findByPhoneAndEmail(phone: String, email: String): Optional<UserEntity> {
+        return usersRepository.findByPhoneOrEmail(
+            phone = phone,
+            email = email
+        )
+    }
+
+    fun findUserById(userId: Long): Optional<UserEntity> {
+        return usersRepository.findById(userId)
     }
 }

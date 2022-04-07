@@ -63,6 +63,20 @@ class UserEntity(
 
     /**
      * ---------------------------------
+     * GET & SET FirstName properties
+     * ---------------------------------
+     */
+
+    fun setLastName(lastName: String) {
+        this.lastName = lastName
+    }
+
+    fun getLastName(): String {
+        return lastName
+    }
+
+    /**
+     * ---------------------------------
      * GET & SET Email properties
      * ---------------------------------
      */
@@ -90,6 +104,6 @@ class UserEntity(
     }
 
     fun getId(): Long {
-        return id
+        return this.id
     }
 }
