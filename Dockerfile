@@ -36,8 +36,8 @@ WORKDIR /app
 
 COPY . ./
 
-RUN mvn dependency:go-offline
-RUN mvn clean package
+RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml dependency:go-offline
+RUN --mount=type=cache,target=/root/.m2 mvn -f /app/pom.xml clean package
 
 # ---------------------------------------------------------------------------
 # NOTE: If you're using this for your own project remember to change the name
